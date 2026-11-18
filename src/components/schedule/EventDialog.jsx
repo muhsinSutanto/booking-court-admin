@@ -122,7 +122,7 @@ function EventForm({ preset, onClose }) {
 
   return (
     <form className="flex flex-col gap-4" onSubmit={submit}>
-      <div className="grid grid-cols-3 gap-1.5">
+      <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3">
         {TYPES.map((type) => (
           <button
             key={type}
@@ -138,7 +138,7 @@ function EventForm({ preset, onClose }) {
         ))}
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <Field label="Lapangan">
           <Select value={form.courtId} onChange={(event) => update({ courtId: event.target.value })}>
             {courts.filter((court) => court.active).map((court) => (
@@ -171,8 +171,8 @@ function EventForm({ preset, onClose }) {
       </div>
 
       {showCustomer ? (
-        <div className="grid grid-cols-2 gap-3">
-          <Field label={form.type === "match" ? "Penyelenggara" : "Pelanggan"} className="col-span-2">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <Field label={form.type === "match" ? "Penyelenggara" : "Pelanggan"} className="sm:col-span-2">
             <Select value={form.customerId} onChange={(event) => update({ customerId: event.target.value })}>
               <option value="">Pilih pelanggan</option>
               {customers.map((customer) => (
@@ -196,9 +196,9 @@ function EventForm({ preset, onClose }) {
         </div>
       ) : null}
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {showTitle ? (
-          <Field label={form.type === "block" ? "Alasan" : "Nama sesi"} className={showCoach || showLevel ? "" : "col-span-2"}>
+          <Field label={form.type === "block" ? "Alasan" : "Nama sesi"} className={showCoach || showLevel ? "" : "sm:col-span-2"}>
             <Input
               value={form.title}
               placeholder={form.type === "block" ? "Perawatan lapangan" : "Nama yang tampil di jadwal"}
@@ -262,7 +262,7 @@ function EventForm({ preset, onClose }) {
             </Field>
           </>
         ) : null}
-        <Field label="Catatan" className="col-span-2">
+        <Field label="Catatan" className="sm:col-span-2">
           <Textarea value={form.notes} onChange={(event) => update({ notes: event.target.value })} />
         </Field>
       </div>

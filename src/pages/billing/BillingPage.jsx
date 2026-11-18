@@ -32,7 +32,7 @@ export function BillingPage() {
           <p className="font-medium">Periode sebelumnya</p>
           <p className="text-sm text-muted-foreground">Pencairan yang sudah ditutup. Angka periode berjalan dihitung dari jadwal.</p>
         </div>
-        <table className="w-full text-sm">
+        <table className="w-full min-w-[640px] text-sm whitespace-nowrap">
           <thead className="text-left text-xs text-muted-foreground">
             <tr>
               <th className="px-4 py-3 font-medium">Periode</th>

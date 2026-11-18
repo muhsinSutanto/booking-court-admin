@@ -5,17 +5,17 @@ import { displayStatus } from "@/lib/events";
 export function PageHeader({ title, description, children }) {
   return (
     <div className="flex flex-wrap items-end justify-between gap-3">
-      <div>
+      <div className="min-w-0">
         <h1 className="text-lg font-semibold tracking-tight">{title}</h1>
         {description ? <p className="mt-0.5 text-sm text-muted-foreground">{description}</p> : null}
       </div>
-      <div className="flex flex-wrap items-center gap-2">{children}</div>
+      <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">{children}</div>
     </div>
   );
 }
 
 export function PageBody({ children, className }) {
-  return <div className={cn("flex h-full flex-col gap-4 overflow-auto p-4", className)}>{children}</div>;
+  return <div className={cn("flex h-full flex-col gap-4 overflow-auto p-3 sm:p-4", className)}>{children}</div>;
 }
 
 export function Panel({ className, children }) {
@@ -93,7 +93,7 @@ export function SearchInput({ value, onChange, placeholder }) {
       value={value}
       onChange={(event) => onChange(event.target.value)}
       placeholder={placeholder}
-      className="h-9 w-full max-w-xs rounded-full border border-input bg-white px-3 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/15"
+      className="h-9 w-full rounded-full border border-input bg-white px-3 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/15 sm:max-w-xs"
     />
   );
 }

@@ -47,7 +47,7 @@ export function MatchesPage() {
                     </div>
                     <PaymentBadge payment={match.payment} />
                   </div>
-                  <div className="mt-4 flex items-center gap-2">
+                  <div className="mt-4 flex flex-wrap items-center gap-2">
                     {seats.map((name, index) => (
                       <span
                         key={`${match.id}-${index}`}

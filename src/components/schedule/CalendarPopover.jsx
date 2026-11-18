@@ -29,7 +29,7 @@ export function CalendarPopover({ date, onChange }) {
         <Popover.Content
           align="center"
           sideOffset={8}
-          className="z-50 w-[280px] rounded-2xl bg-white p-3 shadow-xl ring-1 ring-border outline-none"
+          className="z-50 w-[min(280px,calc(100vw-1.5rem))] rounded-2xl bg-white p-3 shadow-xl ring-1 ring-border outline-none"
         >
           <div className="mb-2 flex items-center justify-between px-1">
             <IconButton label="Bulan sebelumnya" onClick={() => setCursor(new Date(year, month - 1, 1))}>

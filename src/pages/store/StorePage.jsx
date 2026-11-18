@@ -76,7 +76,7 @@ export function StorePage() {
           <Field label="Kategori">
             <Input value={form.category} onChange={(event) => setForm({ ...form, category: event.target.value })} />
           </Field>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <Field label="Harga">
               <Input type="number" value={form.price} onChange={(event) => setForm({ ...form, price: event.target.value })} />
             </Field>

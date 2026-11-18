@@ -34,17 +34,17 @@ export function SchedulePage() {
 
   return (
     <div className="flex h-full flex-col gap-3 p-3">
-      <div className="flex flex-wrap items-center gap-2">
-        <label className="relative">
+      <div className="flex flex-col gap-2 lg:flex-row lg:flex-wrap lg:items-center">
+        <label className="relative min-w-0 lg:w-64">
           <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Cari di jadwal"
-            className="h-9 w-64 rounded-full border bg-white pr-3 pl-9 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/15"
+            className="h-9 w-full rounded-full border bg-white pr-3 pl-9 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/15"
           />
         </label>
-        <div className="ml-auto flex flex-wrap items-center gap-1.5">
+        <div className="flex flex-wrap items-center gap-1.5 lg:ml-auto">
           <Button
             type="button"
             variant="outline"
@@ -70,7 +70,7 @@ export function SchedulePage() {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 px-1 text-[11px] text-muted-foreground">
+      <div className="no-scrollbar flex items-center gap-3 overflow-x-auto px-1 text-[11px] whitespace-nowrap text-muted-foreground">
         {LEGEND.map((type) => (
           <span key={type} className="inline-flex items-center gap-1.5">
             <span className={cn("size-2.5 rounded-sm", TYPE_META[type].chip)} />

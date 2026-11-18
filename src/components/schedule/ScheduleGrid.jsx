@@ -46,11 +46,11 @@ export function ScheduleGrid({ date, courts, club, events, onCreate, onOpen }) {
 
   return (
     <div ref={scroller} className="h-full overflow-auto">
-      <div className="min-w-[860px]">
+      <div className="min-w-max">
         <div className="sticky top-0 z-30 flex border-b bg-white">
           <div className="sticky left-0 z-40 w-16 shrink-0 bg-white" />
           {activeCourts.map((court) => (
-            <div key={court.id} className="min-w-56 flex-1 border-l px-3 py-3 text-center">
+            <div key={court.id} className="w-[min(42vw,280px)] min-w-44 shrink-0 border-l px-3 py-3 text-center sm:w-64 sm:min-w-56 lg:w-auto lg:min-w-56 lg:flex-1">
               <p className="text-sm font-semibold">{court.name}</p>
               <p className="text-[11px] text-muted-foreground">{court.type}</p>
             </div>
@@ -72,7 +72,7 @@ export function ScheduleGrid({ date, courts, club, events, onCreate, onOpen }) {
               return (
                 <div
                   key={court.id}
-                  className="relative min-w-56 flex-1 border-l"
+                  className="relative w-[min(42vw,280px)] min-w-44 shrink-0 border-l sm:w-64 sm:min-w-56 lg:w-auto lg:min-w-56 lg:flex-1"
                   style={{ height }}
                   onClick={(event) => handleColumnClick(event, court)}
                 >

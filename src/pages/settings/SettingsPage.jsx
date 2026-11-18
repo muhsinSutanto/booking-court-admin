@@ -72,7 +72,7 @@ export function SettingsPage() {
             <Field label="Nama">
               <Input value={profile.name} onChange={(event) => setProfile({ ...profile, name: event.target.value })} />
             </Field>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <Field label="Kota">
                 <Input value={profile.city} onChange={(event) => setProfile({ ...profile, city: event.target.value })} />
               </Field>
@@ -83,7 +83,7 @@ export function SettingsPage() {
             <Field label="Alamat">
               <Input value={profile.address} onChange={(event) => setProfile({ ...profile, address: event.target.value })} />
             </Field>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <Field label="Telepon">
                 <Input value={profile.phone} onChange={(event) => setProfile({ ...profile, phone: event.target.value })} />
               </Field>
@@ -91,7 +91,7 @@ export function SettingsPage() {
                 <Input value={profile.email} onChange={(event) => setProfile({ ...profile, email: event.target.value })} />
               </Field>
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <Field label="Jam buka">
                 <Select value={profile.openHour} onChange={(event) => setProfile({ ...profile, openHour: Number(event.target.value) })}>
                   {hours.map((hour) => (
@@ -143,7 +143,7 @@ export function SettingsPage() {
             ))}
           </div>
           <form className="mt-2 grid gap-3 border-t border-border pt-4" onSubmit={saveCourt}>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <Field label="Nama lapangan">
                 <Input value={courtForm.name} onChange={(event) => setCourtForm({ ...courtForm, name: event.target.value })} />
               </Field>
@@ -169,7 +169,7 @@ export function SettingsPage() {
           <p className="font-medium">Akses staf</p>
           <p className="text-sm text-muted-foreground">Akun login demo tetap super admin. Daftar ini hanya penunjuk peran di venue.</p>
         </div>
-        <table className="w-full text-sm">
+        <table className="w-full min-w-[520px] text-sm whitespace-nowrap">
           <tbody>
             {visibleStaff.map((person) => (
               <tr key={person.id} className="border-t border-border">

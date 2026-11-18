@@ -54,7 +54,7 @@ export function PaymentsPage() {
         <EmptyState title="Tidak ada pembayaran" body="Filter ini tidak punya transaksi." />
       ) : (
         <Panel className="overflow-auto">
-          <table className="w-full text-sm">
+          <table className="w-full min-w-[680px] text-sm whitespace-nowrap">
             <thead className="bg-[#f7f6f1] text-left text-xs text-muted-foreground">
               <tr>
                 <th className="px-4 py-3 font-medium">Sesi</th>

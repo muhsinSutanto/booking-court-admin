@@ -48,7 +48,7 @@ export function ProgramsPage() {
               </div>
               <p className="text-sm text-muted-foreground">{program.summary}</p>
               <p className="text-sm">{program.schedule}</p>
-              <div className="mt-auto flex items-end justify-between">
+              <div className="mt-auto flex flex-wrap items-end justify-between gap-2">
                 <div>
                   <p className="text-sm font-medium">{formatRupiahFull(program.price)}</p>
                   <p className="text-xs text-muted-foreground">{program.members} member</p>
@@ -73,7 +73,7 @@ export function ProgramsPage() {
               onChange={(event) => setForm({ ...form, schedule: event.target.value })}
             />
           </Field>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <Field label="Harga">
               <Input type="number" value={form.price} onChange={(event) => setForm({ ...form, price: event.target.value })} />
             </Field>

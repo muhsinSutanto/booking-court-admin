@@ -81,7 +81,7 @@ export function LeaguesPage() {
           <Field label="Nama">
             <Input value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} />
           </Field>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <Field label="Divisi">
               <Input value={form.division} onChange={(event) => setForm({ ...form, division: event.target.value })} />
             </Field>

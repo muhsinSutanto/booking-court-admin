@@ -85,9 +85,9 @@ export function ReportsPage() {
       </div>
 
       <div className="grid gap-3 xl:grid-cols-[1.4fr_0.8fr]">
-        <Panel className="p-4">
+        <Panel className="overflow-x-auto p-4">
           <p className="font-medium">Pendapatan 7 hari</p>
-          <div className="mt-4 flex h-48 items-end gap-2">
+          <div className="mt-4 flex h-48 min-w-[520px] items-end gap-2">
             {series.map((day) => (
               <div key={day.iso} className="flex min-w-0 flex-1 flex-col items-center gap-2">
                 <span className="text-[10px] text-muted-foreground">{day.total ? formatRupiah(day.total) : "—"}</span>
@@ -102,7 +102,7 @@ export function ReportsPage() {
         </Panel>
         <Panel className="p-4">
           <p className="font-medium">Campuran hari ini</p>
-          <div className="mt-4 flex items-center gap-4">
+          <div className="mt-4 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <div
               className="relative size-28 shrink-0 rounded-full"
               style={{ background: mixTotal && mix.some((item) => item.count) ? `conic-gradient(${stops.join(",")})` : "#eceae3" }}
@@ -146,7 +146,7 @@ export function ReportsPage() {
               <p className="text-sm text-muted-foreground">Belum ada pembayaran masuk.</p>
             ) : (
               spenders.map((customer, index) => (
-                <div key={customer.id} className="flex items-center justify-between border-t border-border py-2 text-sm first:border-t-0">
+                <div key={customer.id} className="flex flex-wrap items-center justify-between gap-1 border-t border-border py-2 text-sm first:border-t-0">
                   <span>
                     <span className="mr-2 text-muted-foreground">{index + 1}</span>
                     {customer.name}

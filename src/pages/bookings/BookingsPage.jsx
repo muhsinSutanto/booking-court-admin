@@ -56,7 +56,7 @@ export function BookingsPage() {
         <EmptyState title="Tidak ada booking" body="Coba longgarkan filter, atau buat jadwal dari halaman Jadwal." />
       ) : (
         <Panel className="overflow-auto">
-          <table className="w-full text-sm">
+          <table className="w-full min-w-[720px] text-sm whitespace-nowrap">
             <thead className="bg-[#f7f6f1] text-left text-xs text-muted-foreground">
               <tr>
                 <th className="px-4 py-3 font-medium">Sesi</th>

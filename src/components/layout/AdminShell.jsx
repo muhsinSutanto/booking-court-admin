@@ -1,4 +1,5 @@
-import { Check, ChevronDown, LogOut } from "lucide-react";
+import { useState } from "react";
+import { Check, ChevronDown, LogOut, Menu } from "lucide-react";
 import { DropdownMenu } from "radix-ui";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { BrandMark } from "@/components/layout/BrandMark";
@@ -8,11 +9,21 @@ import { useClub } from "@/context/ClubContext";
 import { cn } from "@/lib/utils";
 
 export function AdminShell() {
+  const [navOpen, setNavOpen] = useState(false);
+
   return (
     <div className="flex h-svh overflow-hidden bg-background text-foreground">
-      <Sidebar />
+      {navOpen ? (
+        <button
+          type="button"
+          className="fixed inset-0 z-30 bg-ink/30 lg:hidden"
+          aria-label="Tutup menu"
+          onClick={() => setNavOpen(false)}
+        />
+      ) : null}
+      <Sidebar open={navOpen} onNavigate={() => setNavOpen(false)} />
       <div className="flex min-w-0 flex-1 flex-col">
-        <Topbar />
+        <Topbar onOpenNav={() => setNavOpen(true)} />
         <main className="min-h-0 flex-1">
           <Outlet />
         </main>
@@ -21,18 +32,24 @@ export function AdminShell() {
   );
 }
 
-function Sidebar() {
+function Sidebar({ open, onNavigate }) {
   return (
-    <aside className="flex w-[220px] shrink-0 flex-col border-r bg-white">
-      <NavLink to="/schedule" className="flex h-14 items-center gap-2 border-b px-4">
+    <aside
+      className={cn(
+        "fixed inset-y-0 left-0 z-40 flex w-[240px] shrink-0 flex-col border-r bg-white transition-transform lg:static lg:translate-x-0",
+        open ? "translate-x-0" : "-translate-x-full",
+      )}
+    >
+      <NavLink to="/schedule" onClick={onNavigate} className="flex h-14 items-center gap-2 border-b px-4">
         <BrandMark className="size-5" />
         <span className="text-[13px] font-semibold tracking-[0.16em]">SAMPLE</span>
       </NavLink>
       <nav className="no-scrollbar flex-1 overflow-auto py-3">
         {NAV_ITEMS.map((item) => (
-          <NavLink
+            <NavLink
             key={item.to}
             to={item.to}
+            onClick={onNavigate}
             className={({ isActive }) =>
               cn(
                 "mx-2 flex items-center gap-2.5 rounded-lg px-3 py-2 text-[13px]",
@@ -49,24 +66,33 @@ function Sidebar() {
   );
 }
 
-function Topbar() {
+function Topbar({ onOpenNav }) {
   const { clubs, club, setClubId } = useClub();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   return (
-    <header className="flex h-14 shrink-0 items-center justify-end gap-2 border-b bg-white px-4">
+    <header className="flex h-14 shrink-0 items-center gap-2 border-b bg-white px-3 sm:px-4">
+      <button
+        type="button"
+        className="flex size-9 items-center justify-center rounded-lg hover:bg-secondary lg:hidden"
+        aria-label="Buka menu"
+        onClick={onOpenNav}
+      >
+        <Menu className="size-5" />
+      </button>
+      <div className="ml-auto flex min-w-0 items-center gap-2">
       <DropdownMenu.Root>
-        <DropdownMenu.Trigger className="inline-flex h-9 items-center gap-2 rounded-full border bg-white px-3 text-sm outline-none hover:bg-secondary">
-          <span className="size-2 rounded-full bg-lime" />
-          <span className="max-w-56 truncate">{club?.name}</span>
+        <DropdownMenu.Trigger className="inline-flex h-9 max-w-[58vw] items-center gap-2 rounded-full border bg-white px-3 text-sm outline-none hover:bg-secondary sm:max-w-none">
+          <span className="size-2 shrink-0 rounded-full bg-lime" />
+          <span className="truncate">{club?.name}</span>
           <ChevronDown className="size-4 text-muted-foreground" />
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content
             align="end"
             sideOffset={8}
-            className="z-50 w-64 rounded-xl bg-white p-1 shadow-lg ring-1 ring-border"
+            className="z-50 w-[min(16rem,calc(100vw-1.5rem))] rounded-xl bg-white p-1 shadow-lg ring-1 ring-border"
           >
             {clubs.map((item) => (
               <DropdownMenu.Item
@@ -96,7 +122,7 @@ function Topbar() {
           <DropdownMenu.Content
             align="end"
             sideOffset={8}
-            className="z-50 w-56 rounded-xl bg-white p-1 shadow-lg ring-1 ring-border"
+            className="z-50 w-[min(14rem,calc(100vw-1.5rem))] rounded-xl bg-white p-1 shadow-lg ring-1 ring-border"
           >
             <div className="px-3 py-2">
               <p className="text-sm font-medium">{user?.name}</p>
@@ -115,6 +141,7 @@ function Topbar() {
           </DropdownMenu.Content>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>
+      </div>
     </header>
   );
 }

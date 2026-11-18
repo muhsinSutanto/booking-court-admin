@@ -27,7 +27,7 @@ export function LoginPage() {
 
   return (
     <div className="grid min-h-svh place-items-center bg-background px-4 py-10">
-      <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-sm ring-1 ring-border">
+      <div className="w-full max-w-md rounded-3xl bg-white p-5 shadow-sm ring-1 ring-border sm:p-8">
         <div className="flex items-center gap-2">
           <BrandMark className="size-6" />
           <span className="text-sm font-semibold tracking-[0.16em]">SAMPLE</span>

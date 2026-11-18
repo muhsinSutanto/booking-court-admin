@@ -49,7 +49,7 @@ export function RewardsPage() {
                 <Badge tone={offer.active ? "lime" : "muted"}>{offer.active ? "Aktif" : "Mati"}</Badge>
               </div>
               <p className="text-sm text-muted-foreground">{offer.detail}</p>
-              <div className="mt-auto flex items-center justify-between">
+              <div className="mt-auto flex flex-wrap items-center justify-between gap-2">
                 <p className="text-sm">
                   <span className="font-medium">{offer.discount}</span>
                   <span className="text-muted-foreground"> · dipakai {offer.used} kali</span>
@@ -70,7 +70,7 @@ export function RewardsPage() {
 
       <Dialog open={open} onOpenChange={setOpen} title="Promo baru" description="Kode disimpan untuk venue yang sedang dibuka.">
         <form className="flex flex-col gap-3" onSubmit={submit}>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <Field label="Kode">
               <Input value={form.code} onChange={(event) => setForm({ ...form, code: event.target.value })} placeholder="SORE20" />
             </Field>
