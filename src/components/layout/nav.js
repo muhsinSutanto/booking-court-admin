@@ -1,0 +1,31 @@
+import {
+  BarChart3,
+  CalendarDays,
+  GraduationCap,
+  Layers,
+  Medal,
+  Percent,
+  Receipt,
+  Settings,
+  ShoppingBag,
+  Trophy,
+  Users,
+  Wallet,
+  ClipboardList,
+} from "lucide-react";
+
+export const NAV_ITEMS = [
+  { to: "/schedule", label: "Jadwal", icon: CalendarDays },
+  { to: "/customers", label: "Pelanggan", icon: Users },
+  { to: "/rewards", label: "Promo", icon: Percent },
+  { to: "/payments", label: "Pembayaran", icon: Wallet },
+  { to: "/bookings", label: "Booking", icon: ClipboardList },
+  { to: "/matches", label: "Match", icon: Trophy },
+  { to: "/clinics", label: "Klinik", icon: GraduationCap },
+  { to: "/programs", label: "Program", icon: Layers },
+  { to: "/leagues", label: "Liga", icon: Medal },
+  { to: "/store", label: "Toko", icon: ShoppingBag },
+  { to: "/billing", label: "Tagihan", icon: Receipt },
+  { to: "/reports", label: "Laporan", icon: BarChart3 },
+  { to: "/settings", label: "Pengaturan", icon: Settings },
+];
